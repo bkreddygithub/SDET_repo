@@ -33,9 +33,7 @@ public class SeleniumAssignmen3 {
 		
 		driver.findElement(By.name("login[email]")).sendKeys("administrator@localhost.com");
 		driver.findElement(By.name("login[password]")).sendKeys("administrator");
-		driver.findElement(By.xpath("(//button[contains(text(),'Login')])")).submit();
-	
-		
+		driver.findElement(By.xpath("(//button[contains(text(),'Login')])")).submit();	
 	
 		//Step3: Verify dashboard title after logged in successfully.
 
@@ -43,7 +41,7 @@ public class SeleniumAssignmen3 {
 		System.out.println("currentURL is:"+currentURL);
 	
 		//step4: Verify that all options are present on dash board page.  
-
+					
 		boolean dashboardPresent = driver.findElement(By.xpath("//span[text() = 'Dashboard']")).isDisplayed();
 		Assert.assertEquals(dashboardPresent, true);
 		
