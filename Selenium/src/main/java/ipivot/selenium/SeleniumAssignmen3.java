@@ -9,15 +9,13 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.Alert;
 import io.github.bonigarcia.wdm.WebDriverManager;
-
-
-
+import junit.framework.TestCase;
 
 import java.util.concurrent.TimeUnit;
 
 
 
-public class SeleniumAssignmen3  {
+public class SeleniumAssignmen3 {
 
 	
 	public static void main(String[] args) {
@@ -48,6 +46,7 @@ public class SeleniumAssignmen3  {
 
 		boolean dashboardPresent = driver.findElement(By.xpath("//span[text() = 'Dashboard']")).isDisplayed();
 		Assert.assertEquals(dashboardPresent, true);
+		
 		boolean projectsPresent = driver.findElement(By.xpath("//span[text() = 'Projects']")).isDisplayed();
 		Assert.assertEquals(projectsPresent, true);
 		boolean tasksPresent = driver.findElement(By.xpath("//span[text() = 'Tasks']")).isDisplayed();
@@ -69,10 +68,11 @@ public class SeleniumAssignmen3  {
 		
 		//Step5:  Click on “Add Task” button 
 		driver.findElement(By.xpath("//button[text()='Add Task']")).click();
-		//driver.switchTo().activeElement();
+		driver.switchTo().activeElement();
 		
 		//Step6: Select “Test Project1” from project drop down list.
 		WebElement projectDD = driver.findElement(By.id("form_projects_id"));
+		//WebElement projectDD = driver.findElement(By.xpath("/html/body/div[8]/div/form/div/div/div/div/select"));
 		Select selectprojectDD = new Select (projectDD);
 		selectprojectDD.selectByIndex(1);
 			
@@ -179,6 +179,15 @@ public class SeleniumAssignmen3  {
 		al.accept();
 			
 		//Step19: Verify that user is deleted from system. 
+		 WebElement searchField = driver.findElement(By.xpath("//div[@id='search_menu']"));
+		 Actions movemouseonSearch1 = new Actions(driver);
+		 movemouseonSearch1.moveToElement(searchField).build().perform();
+		 
+		 WebElement searchText = driver.findElement(By.xpath("//td/input[@id='search_keywords']"));
+		 searchText.sendKeys("Bhargavi");
+		 
+		 WebElement searchButton = driver.findElement(By.xpath("//td/input[@class='btn btn-default']"));
+		 searchButton.click();
 
 		//Step20: Logout of application & close browser.
  		 	
